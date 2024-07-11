@@ -14,4 +14,4 @@ This is a movie page.
 To run the code:
 
 ```sh
-yarn
+yarn dev
