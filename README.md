@@ -10,9 +10,9 @@ This is a movie page.
 Installation
 
 Install the dependencies:
-bash
+
 yarn
 
 Start the development server:
-bash
+
 yarn dev
