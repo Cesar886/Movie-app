@@ -2,6 +2,7 @@ import './Login.css';
 import '@mantine/core/styles.css';
 import { Button, Container, MantineProvider, Paper, PasswordInput, Space, TextInput, Text } from '@mantine/core';
 import { useState } from 'react';
+// import {  } from "../App";
 
 export default function App() {
 
@@ -9,8 +10,8 @@ export default function App() {
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    if (username === 'Daniel' && password === '123456') {
-      console.log('d');
+    if (username === 'admin@gmail.com' && password === '123456') {
+      alert('Conexion Exitosa')
     } else {
       console.log('Syntax Error');
     }
