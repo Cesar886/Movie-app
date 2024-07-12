@@ -1,13 +1,10 @@
 import { MantineProvider, SimpleGrid } from "@mantine/core"
-import { Badge, Button, Card, Group, Text, Image, Modal } from '@mantine/core';
-import { useDisclosure } from "@mantine/hooks";
+import { Badge, Button, Card, Group, Text, Image } from '@mantine/core';
 
 
 
 
 export const GifItem = ({ title, url, id, desc, rate}) => {
-
-    const [opened, { open, close }] = useDisclosure(false);
 
 
   return (
@@ -27,16 +24,12 @@ export const GifItem = ({ title, url, id, desc, rate}) => {
                         <Badge color="blue">{ rate }</Badge>
                     </Group>
 
-                    {/* <Text size="sm" c="dimmed">
+                    <Text size="sm" c="dimmed">
                         { desc }
-                    </Text> */}
+                    </Text>
 
-                    <Modal opened={opened} onClose={close} withCloseButton={false} size={'lg'}>
-                            Buenos dias
-                    </Modal>
-
-                    <Button color="blue" fullWidth mt="md" radius="md" onClick={open}>
-                        Ver mas
+                    <Button color="blue" fullWidth mt="md" radius="md">
+                        Ver mass
                     </Button>
                 </Card>
             </SimpleGrid>
