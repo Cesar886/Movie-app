@@ -1,4 +1,4 @@
-import './App.css';
+import './Login.css';
 import '@mantine/core/styles.css';
 import { Button, Container, MantineProvider, Paper, PasswordInput, Space, TextInput, Text } from '@mantine/core';
 import { useState } from 'react';
