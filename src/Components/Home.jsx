@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { SimpleGrid } from '@mantine/core';
 import { GifItem } from './GifItem';
 import { AddCategory } from './AddCategory';
+import trimText from "../helpers/trimText";
+
 
 export default function Home() {
   const [categories, setCategories] = useState([' ']);
@@ -49,14 +51,14 @@ export default function Home() {
         onNewCategory={(event) => onAddCategory(event)}
       />
 
-      <SimpleGrid cols={6} spacing="lg">
+      <SimpleGrid cols={5} spacing="lg">
         {!isSearching ? (
           popularMovies.map((movie) => (
             <GifItem
               key={movie.id}
               title={movie.title}
               url={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              desc={movie.overview}
+              desc={trimText(movie.overview, 20)}
               rate={movie.vote_average}
             />
           ))
@@ -66,7 +68,7 @@ export default function Home() {
               key={movie.id}
               title={movie.title}
               url={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              desc={movie.overview}
+              desc={trimText(movie.overview, 10)}
               rate={movie.vote_average}
             />
           ))

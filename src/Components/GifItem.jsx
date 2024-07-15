@@ -1,9 +1,6 @@
 import { MantineProvider, SimpleGrid } from "@mantine/core"
 import { Badge, Button, Card, Group, Text, Image } from '@mantine/core';
 
-
-
-
 export const GifItem = ({ title, url, id, desc, rate }) => {
 
 
@@ -25,7 +22,9 @@ export const GifItem = ({ title, url, id, desc, rate }) => {
                     </Group>
 
                     <Text size="sm" c="dimmed">
-                        { desc }
+                        {/* <Props desc={ desc } maxWords={15} /> */}
+                        {desc}
+                        
                     </Text>
 
                     <Button color="blue" fullWidth mt="md" radius="md">
