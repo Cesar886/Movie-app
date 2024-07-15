@@ -13,7 +13,7 @@ export default function BasicAppShell() {
   const apiKey = 'abf7d734dcd7cce557ecf0abc3a863bf';
   const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`;
   
-  useEffect(() => {
+  useEffect(() => { 
     fetch(popularUrl)
       .then(response => response.json())
       .then(data => {

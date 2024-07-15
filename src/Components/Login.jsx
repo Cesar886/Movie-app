@@ -13,7 +13,7 @@ export default function App() {
     if (username === 'admin@gmail.com' && password === '123456') {
       alert('Conexion Exitosa')
     } else {
-      console.log('Syntax Error');
+      alert('User: admin@gmail.com --- Pwd: 123456');
     }
   };
 
