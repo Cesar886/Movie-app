@@ -1,7 +1,5 @@
 import { MantineProvider, SimpleGrid } from "@mantine/core"
 import { Badge, Button, Card, Group, Text, Image } from '@mantine/core';
-import { buildErrorMessage } from "vite";
-buildErrorMessage
 
 
 
