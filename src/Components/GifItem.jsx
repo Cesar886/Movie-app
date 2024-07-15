@@ -4,7 +4,7 @@ import { Badge, Button, Card, Group, Text, Image } from '@mantine/core';
 
 
 
-export const GifItem = ({ title, url, id, desc, rate}) => {
+export const GifItem = ({ title, url, id, desc, rate }) => {
 
 
   return (
