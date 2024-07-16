@@ -3,7 +3,6 @@ import { SimpleGrid, Container } from '@mantine/core';
 import { GifItem } from './GifItem';
 import { AddCategory } from './AddCategory';
 import trimText from "../helpers/trimText";
-import { useDisclosure } from '@mantine/hooks';
 
 export default function Home() {
   const [categories, setCategories] = useState([' ']);
@@ -55,7 +54,7 @@ export default function Home() {
         onNewCategory={(event) => onAddCategory(event)}
       />
 
-      <SimpleGrid cols={3} spacing="lg">
+      <SimpleGrid cols={4} spacing="lg">
         {!isSearching ? (
           popularMovies.map((movie) => (
             <GifItem
