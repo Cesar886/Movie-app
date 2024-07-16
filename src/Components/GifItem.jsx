@@ -32,8 +32,8 @@ export const GifItem = ({ title, url, id, desc, rate }) => {
                         
                     </Text>
 
-                    <Modal opened={opened} onClose={close} withCloseButton={false}>
-                        Modal without header, press escape or click on overlay to close
+                    <Modal opened={opened} onClose={close} >
+                        <Text> jkdjdjdjj</Text>
                     </Modal>
 
                     <Button onClick={open}>Open Modal</Button>

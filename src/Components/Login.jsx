@@ -35,6 +35,7 @@ export default function Login() {
             onChange={(event) => setPassword(event.currentTarget.value)}
           />
           <Space h="md" />
+          
           <Button variant="filled" size="md" color="blue" fullWidth onClick={handleLogin}>
             Login
           </Button>
