@@ -1,8 +1,8 @@
 import { MantineProvider, SimpleGrid } from "@mantine/core"
-import { Badge, Button, Card, Group, Text, Image } from '@mantine/core';
+import { Badge, Button, Card, Group, Text, Image, Modal } from '@mantine/core';
 import { Props } from "../utils/props";
 import { useDisclosure } from '@mantine/hooks';
-import { Modal, Button } from '@mantine/core';
+
 
 export const GifItem = ({ title, url, id, desc, rate }) => {
 
@@ -37,7 +37,7 @@ export const GifItem = ({ title, url, id, desc, rate }) => {
                     </Modal>
 
                     <Button onClick={open}>Open Modal</Button>
-                    
+
                 </Card>
             </SimpleGrid>
         </MantineProvider>
