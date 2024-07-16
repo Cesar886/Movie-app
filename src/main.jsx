@@ -1,15 +1,11 @@
-// src/index.js
 import '@mantine/core/styles.css';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App'; // Correct import for default export
-// import { Props } from "./utils/props";
-import './index.css';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from '../src/App'
+import './index.css'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
-root.render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-   <App />
+    <App />
   </React.StrictMode>
-);
+)
