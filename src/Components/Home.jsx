@@ -68,7 +68,7 @@ export default function Home() {
               key={movie.id}
               title={movie.title}
               url={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              desc={trimText(movie.overview, 10)}
+              desc={trimText(movie.overview, 5)}
               rate={movie.vote_average}
             />
           ))
