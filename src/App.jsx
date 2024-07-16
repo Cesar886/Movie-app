@@ -6,14 +6,14 @@ import Home from './Components/Home';
 import Login from './Components/Login';
 import { Pelicula } from "./Components/Pelicula";
 
-export default function App() {
+export default function App({ id }) {
   return (
     <MantineProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/Home" element={<Home />} exact />
-          <Route path="/movie" element={<Pelicula />} />
+          <Route path={`/movie/${id}`} element={<Pelicula />} />
         </Routes>
       </BrowserRouter>
     </MantineProvider>

@@ -1,4 +1,4 @@
-
+import './pelicula.css'
 
 
 export const Pelicula = () => {
