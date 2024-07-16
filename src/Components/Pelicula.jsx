@@ -1,5 +1,4 @@
 import { Badge, Card, Group, Image, MantineProvider, SimpleGrid, Text } from '@mantine/core'
-import './pelicula.css'
 
 
 export const Pelicula = ({ title, url, id, desc, rate }) => {

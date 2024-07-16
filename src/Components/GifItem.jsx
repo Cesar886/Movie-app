@@ -13,7 +13,7 @@ export const GifItem = ({ title, url, id, desc, rate }) => {
 
     const handleInfoClick = () => {
         navigate(`/movie/${id}`, { replace: true });
-        console.log("🚀 ~ handleInfoClick ~ `/movie/${id}`:", `/movie/${id}`)
+        // console.log("🚀 ~ handleInfoClick ~ `/movie/${id}`:", `/movie/${id}`)
     };
 
 
@@ -41,14 +41,16 @@ export const GifItem = ({ title, url, id, desc, rate }) => {
                     </Text>
 
 
-                    <Button onClick={open}>Ver mass</Button>
+                    <Button opened={opened} onClose={close} withCloseButton={false}>
+                        Ver mass
+                    </Button>
 
 
                 </Card>
             </SimpleGrid>
-                    {/* <Modal opened={opened} onClose={close} withCloseButton={false} >
+                    <Modal opened={opened} onClose={close} withCloseButton={false} >
                         <Text> jkdjdjdjj</Text>
-                    </Modal> */}
+                    </Modal>
         </MantineProvider>
     )
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { SimpleGrid, Modal, Text, Button, Container } from '@mantine/core';
+import { SimpleGrid, Container } from '@mantine/core';
 import { GifItem } from './GifItem';
 import { AddCategory } from './AddCategory';
 import trimText from "../helpers/trimText";
@@ -11,7 +11,7 @@ export default function Home() {
   const [searchResults, setSearchResults] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
 
-  const [opened, { open, close }] = useDisclosure(false);
+  // const [opened, { open, close }] = useDisclosure(false);
 
 
   const apiKey = 'abf7d734dcd7cce557ecf0abc3a863bf';
@@ -55,8 +55,6 @@ export default function Home() {
         onNewCategory={(event) => onAddCategory(event)}
       />
 
-      <Button onClick={open}>Open Modal</Button>
-
       <SimpleGrid cols={5} spacing="lg">
         {!isSearching ? (
           popularMovies.map((movie) => (
@@ -82,10 +80,6 @@ export default function Home() {
           ))
         )}
       </SimpleGrid>
-
-      <Modal opened={opened} onClose={close} withCloseButton={false} >
-          <Text> jkdjdjdjj</Text>
-      </Modal>
     </Container>
   );
 }
