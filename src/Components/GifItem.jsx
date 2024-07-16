@@ -1,18 +1,19 @@
 import { MantineProvider, SimpleGrid } from "@mantine/core"
-import { Badge, Button, Card, Group, Text, Image } from '@mantine/core';
+import { Badge, Button, Card, Group, Text, Image, Modal } from '@mantine/core';
 import { Props } from "../utils/props";
-// import { useDisclosure } from '@mantine/hooks';
+import { useDisclosure } from '@mantine/hooks';
 import { useNavigate } from "react-router-dom";
 
 
 export const GifItem = ({ title, url, id, desc, rate }) => {
 
-    // const [opened, { open, close }] = useDisclosure(false);
+    const [opened, { open, close }] = useDisclosure(false);
 
     const navigate = useNavigate();
 
     const handleInfoClick = () => {
         navigate(`/movie/${id}`, { replace: true });
+        console.log("🚀 ~ handleInfoClick ~ `/movie/${id}`:", `/movie/${id}`)
     };
 
 
@@ -40,14 +41,14 @@ export const GifItem = ({ title, url, id, desc, rate }) => {
                     </Text>
 
 
-                    <Button onClick={handleInfoClick}>Ver mass</Button>
+                    <Button onClick={open}>Ver mass</Button>
 
-                    {/* <Modal opened={opened} onClose={close} withCloseButton={false} >
-                        <Text> jkdjdjdjj</Text>
-                    </Modal> */}
 
                 </Card>
             </SimpleGrid>
+                    {/* <Modal opened={opened} onClose={close} withCloseButton={false} >
+                        <Text> jkdjdjdjj</Text>
+                    </Modal> */}
         </MantineProvider>
     )
 }

@@ -1,5 +1,3 @@
-import './Login.css';
-import '@mantine/core/styles.css';
 import { Button, Container, MantineProvider, Paper, PasswordInput, Space, TextInput, Text } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';

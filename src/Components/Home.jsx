@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
-import { SimpleGrid } from '@mantine/core';
+import { SimpleGrid, Modal, Text, Button, Container } from '@mantine/core';
 import { GifItem } from './GifItem';
 import { AddCategory } from './AddCategory';
 import trimText from "../helpers/trimText";
-
+import { useDisclosure } from '@mantine/hooks';
 
 export default function Home() {
   const [categories, setCategories] = useState([' ']);
   const [popularMovies, setPopularMovies] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
+
+  const [opened, { open, close }] = useDisclosure(false);
+
 
   const apiKey = 'abf7d734dcd7cce557ecf0abc3a863bf';
   const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`;
@@ -18,6 +21,7 @@ export default function Home() {
     fetch(popularUrl)
       .then(response => response.json())
       .then(data => {
+        console.log("🚀 ~ useEffect ~ data:", data)
         setPopularMovies(data.results);
       })
       .catch(error => {
@@ -46,15 +50,18 @@ export default function Home() {
   };
 
   return (
-    <>
+    <Container>
       <AddCategory  
         onNewCategory={(event) => onAddCategory(event)}
       />
+
+      <Button onClick={open}>Open Modal</Button>
 
       <SimpleGrid cols={5} spacing="lg">
         {!isSearching ? (
           popularMovies.map((movie) => (
             <GifItem
+              id={movie.id}
               key={movie.id}
               title={movie.title}
               url={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -66,6 +73,7 @@ export default function Home() {
           searchResults.map((movie) => (
             <GifItem
               key={movie.id}
+              id={movie.id}
               title={movie.title}
               url={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               desc={trimText(movie.overview, 5)}
@@ -74,6 +82,10 @@ export default function Home() {
           ))
         )}
       </SimpleGrid>
-    </>
+
+      <Modal opened={opened} onClose={close} withCloseButton={false} >
+          <Text> jkdjdjdjj</Text>
+      </Modal>
+    </Container>
   );
 }

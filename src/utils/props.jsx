@@ -4,7 +4,7 @@ export const Props = ({ desc, maxWords }) => {
 
     function recortarTexto(texto) {
         const palabras = texto.split(' ');
-        console.log("🚀 ~ recortarTexto ~ palabras:", palabras)
+        // console.log("🚀 ~ recortarTexto ~ palabras:", palabras)
         if (palabras.length > maxWords) {
             return palabras.slice(0, maxWords).join(' ') + ' ...';
         }
