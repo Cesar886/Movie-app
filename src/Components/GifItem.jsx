@@ -1,12 +1,21 @@
 import { MantineProvider, SimpleGrid } from "@mantine/core"
-import { Badge, Button, Card, Group, Text, Image, Modal } from '@mantine/core';
+import { Badge, Button, Card, Group, Text, Image } from '@mantine/core';
 import { Props } from "../utils/props";
-import { useDisclosure } from '@mantine/hooks';
+// import { useDisclosure } from '@mantine/hooks';
+import { useHistory } from "react-router-dom";
 
 
 export const GifItem = ({ title, url, id, desc, rate }) => {
 
-    const [opened, { open, close }] = useDisclosure(false);
+    // const [opened, { open, close }] = useDisclosure(false);
+
+    const history = useHistory();
+
+
+    const info = () => {
+        // Navigate(' /movie ')
+        history.push(' /movie ')
+    }
 
 
   return (
@@ -32,11 +41,12 @@ export const GifItem = ({ title, url, id, desc, rate }) => {
                         
                     </Text>
 
-                    <Modal opened={opened} onClose={close} >
-                        <Text> jkdjdjdjj</Text>
-                    </Modal>
 
-                    <Button onClick={open}>Open Modal</Button>
+                    <Button onClick={ info }>Ver mass</Button>
+
+                    {/* <Modal opened={opened} onClose={close} withCloseButton={false} >
+                        <Text> jkdjdjdjj</Text>
+                    </Modal> */}
 
                 </Card>
             </SimpleGrid>

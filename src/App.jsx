@@ -4,6 +4,7 @@ import { MantineProvider } from '@mantine/core';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './Components/Home';
 import Login from './Components/Login';
+import { Pelicula } from "./Components/Pelicula";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/Home" element={<Home />} exact />
+          <Route path="/movie" element={<Pelicula />} />
         </Routes>
       </BrowserRouter>
     </MantineProvider>
