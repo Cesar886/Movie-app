@@ -46,12 +46,14 @@ export const Pelicula = ({ title, url, id, desc, rate }) => {
 
             <Group justify="space-between" mt="md" mb="xs">
               <Text weight={500}>{movieData.title}</Text>
-              <Badge color="blue">{movieData.vote_average}</Badge>
+              {/* <Badge color="blue">{movieData.vote_average}</Badge> */}
               <RingProgress
-                sections={[{ value: 40, color: 'blue' }]}
+                sections={[{ value: movieData.vote_average * 10, color: 'blue' }]}
+                size={70}
+                thickness={6}
                 label={
-                  <Text c="blue" fw={700} ta="center" size="xl">
-                    40%
+                  <Text c="blue" fw={700} ta="center" size={ 12 }>
+                    { movieData.vote_average }
                   </Text>
                 }
               />
