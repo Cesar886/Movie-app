@@ -25,7 +25,7 @@ export default function Home() {
       })
       .catch(error => {
         console.error("Syntax Error ", error);
-      });ss
+      });
   }, [ ]);
 
   const fetchMovies = (query) => {
