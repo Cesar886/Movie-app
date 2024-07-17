@@ -1,12 +1,12 @@
 import { Container, Title, Button, Group, Text, List, ThemeIcon, rem } from '@mantine/core';
 import { IconCheck } from '@tabler/icons-react';
-// import image from './image.svg';
 import classes from './HeroBullets.module.css';
 import { useEffect, useState } from 'react';
 
-const apiKey = "abf7d734dcd7cce557ecf0abc3a863bf";
+const apiKey = 'abf7d734dcd7cce557ecf0abc3a863bf';
 
 export const Pelicula = ({ id }) => {
+
   const [movieData, setMovieData] = useState(null);
 
   const fetchMovies = async () => {
@@ -27,10 +27,11 @@ export const Pelicula = ({ id }) => {
   
   return (
     <Container size="md">
+      { movieData && (
       <div className={classes.inner}>
         <div className={classes.content}>
           <Title className={classes.title}>
-            A <span className={classes.highlight}>modern</span> React <br /> components library
+            <span className={classes.highlight}>{ movieData.title }</span>
           </Title>
           <Text c="dimmed" mt="md">
             uild fully functional accessible web applications faster than ever – Mantine includes
@@ -72,6 +73,7 @@ export const Pelicula = ({ id }) => {
         </div>
         {/* <Image src={image.src} className={classes.image} /> */}
       </div>
+      ) }
     </Container>
   );
 }
