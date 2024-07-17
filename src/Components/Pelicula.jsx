@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Title, Button, Group, Text, List, ThemeIcon, rem, Image, RingProgress } from '@mantine/core';
 import { IconCheck } from '@tabler/icons-react';
-import classes from './HeroBullets.module.css';
+import classes from './pelicula.module.css';
 
 const apiKey = 'abf7d734dcd7cce557ecf0abc3a863bf';
 
