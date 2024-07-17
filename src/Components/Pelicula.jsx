@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { Badge, Button, Card, Group, Image, MantineProvider, RingProgress, SimpleGrid, Text } from "@mantine/core";
-import './pelicula.css'
-
+import { Badge, Button, Card, Container, Group, Image, MantineProvider, RingProgress, SimpleGrid, Text } from "@mantine/core";
+import './pelicula.css';
 
 const apiKey = "abf7d734dcd7cce557ecf0abc3a863bf";
 
-export const Pelicula = ({ title, url, id, desc, rate }) => {
+export const Pelicula = ({ id }) => {
   const [movieData, setMovieData] = useState(null);
 
   const fetchMovies = async () => {
@@ -24,49 +23,43 @@ export const Pelicula = ({ title, url, id, desc, rate }) => {
   }, [id]);
 
   return (
-    <MantineProvider>
-      <SimpleGrid cols={1} spacing="lg">
-        {movieData ? (
-          <Card
-            key={movieData.id}
-            shadow="sm"
-            padding="lg"
-            radius="md"
-            withBorder
-            sx={(theme) => ({
-              backgroundColor: theme.colors.gray[0],
-              "&:hover": {
-                backgroundColor: theme.colors.gray[1],
-              },
-            })}
-          >
-            <Card.Section component="a">
-                <Image src={`https://image.tmdb.org/t/p/w500${ movieData.poster_path }`} height={450} alt={movieData.title} />
-            </Card.Section>
+    <Container>
+      {movieData ? (
+        <Card
+          key={movieData.id}
+          shadow="sm"
+          padding="xl"
+          radius="xl"
+        >
+          <Card.Section component="a">
+            <Image 
+              src={`https://image.tmdb.org/t/p/w500${movieData.poster_path}`} 
+              height={450} 
+              alt={movieData.title} 
+            />
+          </Card.Section>
 
-            <Group justify="space-between" mt="md" mb="xs">
-              <Text weight={500}>{movieData.title}</Text>
-              {/* <Badge color="blue">{movieData.vote_average}</Badge> */}
-              <RingProgress
-                sections={[{ value: movieData.vote_average * 10, color: 'blue' }]}
-                size={70}
-                thickness={6}
-                label={
-                  <Text c="blue" fw={700} ta="center" size={ 12 }>
-                    { movieData.vote_average }
-                  </Text>
-                }
-              />
-            </Group>
+          <Group position="apart" mt="md" mb="xs">
+            <Text weight={500}>{movieData.title}</Text>
+            <RingProgress
+              sections={[{ value: movieData.vote_average * 10, color: 'blue' }]}
+              size={70}
+              thickness={6}
+              label={
+                <Text color="blue" weight={700} align="center" size={12}>
+                  {movieData.vote_average}
+                </Text>
+              }
+            />
+          </Group>
 
-            <Text size="sm" color="dimmed">
-              {movieData.overview}
-            </Text>
-          </Card>
-        ) : (
-          <Text>Cargando...</Text>
-        )}
-      </SimpleGrid>
-    </MantineProvider>
+          <Text size="sm" color="dimmed">
+            {movieData.overview}
+          </Text>
+        </Card>
+      ) : (
+        <Text>Cargando...</Text>
+      )}
+    </Container>
   );
 };
