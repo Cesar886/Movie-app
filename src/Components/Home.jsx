@@ -14,7 +14,7 @@ export default function Home() {
 
 
   const apiKey = 'abf7d734dcd7cce557ecf0abc3a863bf';
-  const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`;aaa
+  const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`;
   
   useEffect(() => { 
     fetch(popularUrl)
