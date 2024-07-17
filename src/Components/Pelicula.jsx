@@ -3,11 +3,12 @@ import { IconCheck } from '@tabler/icons-react';
 import classes from './HeroBullets.module.css';
 import { useEffect, useState } from 'react';
 
+
 const apiKey = 'abf7d734dcd7cce557ecf0abc3a863bf';
 
 export const Pelicula = ({ id }) => {
 
-  const [movieData, setMovieData] = useState(null);
+  const [movieData, setMovieData] = useState([]);
 
   const fetchMovies = async () => {
     try {
@@ -27,6 +28,17 @@ export const Pelicula = ({ id }) => {
   
   return (
     <Container size="md">
+      {/* {movieData.map((movieData) => (
+        <GifItem
+          id={movieData.id}
+          key={movieData.id}
+          title={movieData.title}
+          url={`https://image.tmdb.org/t/p/w500${movieData.poster_path}`}
+          desc={movieData.overview}
+          rate={movieData.vote_average}
+        />
+      ))} */}
+
       { movieData && (
       <div className={classes.inner}>
         <div className={classes.content}>

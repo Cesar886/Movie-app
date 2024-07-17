@@ -26,7 +26,7 @@ export default function Home() {
       .catch(error => {
         console.error("Syntax Error ", error);
       });
-  }, []);
+  }, [ ]);
 
   const fetchMovies = (query) => {
     const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`;
