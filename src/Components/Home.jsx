@@ -20,7 +20,7 @@ export default function Home() {
     fetch(popularUrl)
       .then(response => response.json())
       .then(data => {
-        console.log("🚀 ~ useEffect ~ data:", data)
+        // console.log("🚀 ~ useEffect ~ data:", data)
         setPopularMovies(data.results);
       })
       .catch(error => {
