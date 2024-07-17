@@ -2,18 +2,22 @@ import { useEffect, useState } from 'react';
 import { Container, Title, Button, Group, Text, List, ThemeIcon, rem, Image, RingProgress } from '@mantine/core';
 import { IconCheck } from '@tabler/icons-react';
 import classes from './pelicula.module.css';
+import { useParams } from 'react-router-dom'
 
 const apiKey = 'abf7d734dcd7cce557ecf0abc3a863bf';
 
 export const Pelicula = ( ) => {
   const [movieData, setMovieData] = useState({}); // Cambio aquí: usar objeto vacío en lugar de array vacío
-  
-  const pathname = window.location.pathname;
-  const iD = pathname.match(/\d+/g)?.[0];
+  const params = useParams();
+
+  // const pathname = window.location.pathname;
+  // const iD = pathname.match(/\d+/g)?.[0];
+
+
   
   const fetchMovies = async () => {
     try {
-      const response = await fetch(`https://api.themoviedb.org/3/movie/${iD}?api_key=${apiKey}`);
+      const response = await fetch(`https://api.themoviedb.org/3/movie/${params.id}?api_key=${apiKey}`);
       const data = await response.json();
       setMovieData(data);
       console.log("🚀 ~ fetchMovies ~ data:", data);
@@ -24,10 +28,10 @@ export const Pelicula = ( ) => {
   
   useEffect(() => {
 
-    if (iD) {
+    if (params.id) {
       fetchMovies();
     }
-  }, [iD]);
+  }, []);
   
   const numero = Math.round(movieData.vote_average * 100);
   const porcentaje = numero.toString().slice(0, 2);
@@ -49,20 +53,18 @@ export const Pelicula = ( ) => {
               </b>
                { movieData.release_date }
             </Text>
-               <span>
-               {movieData.vote_average && ( 
-                 <RingProgress
-                 size={70}
-                 thickness={8}
-                 sections={[{ value: movieData.vote_average * 10, color: 'blue' }]} 
-                 label={ 
-                   <Text c="blue" fw={500} ta="center" size={10}>
-                       {porcentaje}%
-                     </Text>
-                   }
-                   />
-                 )}
-               </span>
+              {movieData.vote_average && ( 
+                <RingProgress
+                size={70}
+                thickness={8}
+                sections={[{ value: movieData.vote_average * 10, color: 'blue' }]} 
+                label={ 
+                  <Text c="blue" fw={500} ta="center" size={10}>
+                      {porcentaje}%
+                    </Text>
+                  }
+                  />
+                )}
                         
             <b>Generos:</b>
              { movieData.genres && movieData.genres.map(genre => <p>{genre.name}</p>) }
@@ -91,10 +93,10 @@ export const Pelicula = ( ) => {
 
             <Group mt={30}>
               <Button radius="xl" size="md" className={classes.control}>
-                Get started
+                Dar Like
               </Button>
               <Button variant="default" radius="xl" size="md" className={classes.control}>
-                Source code
+                Suscribirse
               </Button>
             </Group>
           </div>
