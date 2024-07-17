@@ -1,19 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Container, Title, Button, Group, Text, List, ThemeIcon, rem, Image, RingProgress } from '@mantine/core';
 import { IconCheck } from '@tabler/icons-react';
 import classes from './pelicula.module.css';
 
 const apiKey = 'abf7d734dcd7cce557ecf0abc3a863bf';
 
-export const Pelicula = () => {
-
-  
-  
-  
+export const Pelicula = ( ) => {
   const [movieData, setMovieData] = useState({}); // Cambio aquí: usar objeto vacío en lugar de array vacío
   
   const pathname = window.location.pathname;
-  const iD = pathname.match(/\d+/g)?.[0]; // Cambio aquí: obtener el primer elemento de la coincidencia
+  const iD = pathname.match(/\d+/g)?.[0];
   
   const fetchMovies = async () => {
     try {
@@ -27,6 +23,7 @@ export const Pelicula = () => {
   };
   
   useEffect(() => {
+
     if (iD) {
       fetchMovies();
     }
@@ -46,18 +43,30 @@ export const Pelicula = () => {
             <Text c="dimmed" mt="md">
               {movieData.overview}
             </Text>
-            {movieData.vote_average && ( // Renderizado condicional solo si vote_average está presente
-            <RingProgress
-              sections={[{ value: movieData.vote_average * 10, color: 'blue' }]} // Asumiendo que vote_average es en base 10
-              label={
-                <Text c="blue" fw={700} ta="center" size="xl">
-                  {porcentaje}%
-                </Text>
-              }
-            />
-          )}
-          { movieData.release_date }
+            <Text>
+              <b>
+              Fecha de lanzaiento: 
+              </b>
+               { movieData.release_date }
+            </Text>
+               <span>
+               {movieData.vote_average && ( 
+                 <RingProgress
+                 size={70}
+                 thickness={8}
+                 sections={[{ value: movieData.vote_average * 10, color: 'blue' }]} 
+                 label={ 
+                   <Text c="blue" fw={500} ta="center" size={10}>
+                       {porcentaje}%
+                     </Text>
+                   }
+                   />
+                 )}
+               </span>
                         
+            <b>Generos:</b>
+             { movieData.genres && movieData.genres.map(genre => <p>{genre.name}</p>) }
+             
             <List
               mt={30}
               spacing="sm"
@@ -69,7 +78,7 @@ export const Pelicula = () => {
               }
             >
               <List.Item>
-                <b>TypeScript based</b> – build type safe applications, all components and hooks export types
+                <b> based</b> – build type safe applications, all components and hooks export types
               </List.Item>
               <List.Item>
                 <b>Free and open source</b> – all packages have MIT license, you can use Mantine in any project

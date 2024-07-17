@@ -64,6 +64,7 @@ export default function Home() {
               url={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               desc={trimText(movie.overview, 20)}
               rate={movie.vote_average}
+              genero={ movie.genres }
             />
           ))
         ) : (
@@ -75,6 +76,7 @@ export default function Home() {
               url={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               desc={trimText(movie.overview, 5)}
               rate={movie.vote_average}
+              genero={ movie.genres }
             />
           ))
         )}
