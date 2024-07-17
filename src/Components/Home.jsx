@@ -29,7 +29,7 @@ export default function Home() {
   }, [ ]);
 
   const fetchMovies = (query) => {
-    const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`;
+    const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`;ww
     
     fetch(searchUrl)
       .then(response => response.json())
