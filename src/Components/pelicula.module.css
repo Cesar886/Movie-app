@@ -1,3 +1,11 @@
+body {
+  /* background-image: url('../../public/moview.jpeg'); */
+  background-repeat: no-repeat;
+  background-size: cover; /* Ensures the background image covers the entire page */
+  background-position: center; /* Centers the image */
+}
+
+
 .inner {
   display: flex;
   justify-content: space-between;

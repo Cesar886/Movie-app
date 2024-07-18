@@ -39,7 +39,7 @@ export default function Login() {
           <Space h="md" />
           
           <Button variant="filled" size="md" color="blue" fullWidth onClick={handleLogin}>
-            Login
+            Ingresar
           </Button>
         </Paper>
       </Container>

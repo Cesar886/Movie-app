@@ -52,6 +52,7 @@ export const Pelicula = () => {
     <Container size="md">
       {movieData && (
         <div className={classes.inner}>
+          <Image src={`https://image.tmdb.org/t/p/w500${movieData.poster_path}`} className={classes.image} />
           <div className={classes.content}>
             <Title className={classes.title}>
               <span>{movieData.title}</span>
@@ -59,7 +60,7 @@ export const Pelicula = () => {
             <Text c="dimmed" mt="md">
               {movieData.overview}
             </Text>
-            <Card withBorder p="xl" radius="md" className={classes.card}>
+            <Card withBorder p="xl" radius="md" className={classes.card} mt='lg'>
               <div className={classes.iner}>
                 <div className={classes.content}>
                   <div className={classes.leftContent}>                 
@@ -149,7 +150,6 @@ export const Pelicula = () => {
               </Button>
             </Group>
           </div>
-          <Image src={`https://image.tmdb.org/t/p/w500${movieData.poster_path}`} className={classes.image} />
         </div>
       )}
 
