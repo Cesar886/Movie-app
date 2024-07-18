@@ -49,7 +49,7 @@ export default function Home() {
   };
 
   return (
-    <Container>
+    <Container fluid={ true } size='xl'>
       <AddCategory  
         onNewCategory={(event) => onAddCategory(event)}
       />
