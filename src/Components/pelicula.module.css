@@ -83,7 +83,7 @@
 }
 .ring {
   flex: 1;
-  display: flex;
+  display:inline;
   justify-content: flex-end;
 
   @media (max-width: $mantine-breakpoint-xs) {

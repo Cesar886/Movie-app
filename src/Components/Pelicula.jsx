@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Container, Title, Button, Group, Text, List, ThemeIcon, rem, Image, RingProgress, Card, useMantineTheme } from '@mantine/core';
+import { Container, Title, Button, Group, Text, List, ThemeIcon, rem, Image, RingProgress, Card, useMantineTheme, Badge } from '@mantine/core';
 import { IconCheck } from '@tabler/icons-react';
 import { useParams } from 'react-router-dom';
 // import classes from './pelicula.module.css';
@@ -50,7 +50,7 @@ export const Pelicula = () => {
   const porcentaje = (numero / 10).toFixed(1);
 
   return (
-    <>
+  
     <Container size="md">
       {movieData && (
         <div className={classes.inner}>
@@ -109,24 +109,33 @@ export const Pelicula = () => {
           </div>
           <Image src={`https://image.tmdb.org/t/p/w500${movieData.poster_path}`} className={classes.image} />
         </div>
-
-
-   
-
       )}
-      <Card withBorder p="xl" radius="md" className={classes.card}>
-        <div className={classes.iner}>
+
+    <Card withBorder p="xl" radius="md" className={classes.card}>
+      <div className={classes.iner}>
+        <div>
+          <Text fz="xl" className={classes.label}>
+            Vista General
+          </Text>
           <div>
-            <Text fz="xl" className={classes.label}>
-              Vista General
-            </Text>
-            <div>
-              <Text className={classes.lead} mt={30}>
+            <Text className={classes.lead} mt={30}>
               {movieData.release_date}
-              </Text>
-              <Text fz="xs" c="dimmed">
-                Fecha de lanzamiento:
-              </Text>
+            </Text>
+            <Text fz="xs" c="dimmed">
+              Fecha de lanzamiento:
+            </Text>
+          </div>
+
+          <div>
+            <Text className={classes.lead} mt={30}>
+              Géneros
+            </Text>
+            <div className={classes.genreList}>
+              {movieData.genres && movieData.genres.map(genre => (
+                <Badge key={genre.id} color="blue" className={classes.genreBadge}>
+                  {genre.name}
+                </Badge>
+              ))}
             </div>
           </div>
 
@@ -141,11 +150,12 @@ export const Pelicula = () => {
                   {porcentaje}%
                 </Text>
               }
-              />
+            />
           </div>
         </div>
-        </Card>
+      </div>
+    </Card>
    </Container>
-   </>
+   
   );
 };
