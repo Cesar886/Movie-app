@@ -1,5 +1,5 @@
 body {
-  /* background-image: url('../../public/moview.jpeg'); */
+  background-image: url('../../public/moview.jpeg'); 
   background-repeat: no-repeat;
   background-size: cover; /* Ensures the background image covers the entire page */
   background-position: center; /* Centers the image */
@@ -15,7 +15,7 @@ body {
 
 .content {
   max-width: rem(480px);
-  margin-right: calc(var(--mantine-spacing-xl) * 3);
+  /* margin-right: calc(var(--mantine-spacing-xl) * 3); */
 
   @media (max-width: $mantine-breakpoint-md) {
     max-width: 100%;
@@ -46,6 +46,7 @@ body {
 .image {
   width: rem(476px);
   height: rem(456px);
+  margin-right: 30px;
 
   @media (max-width: $mantine-breakpoint-md) {
     display: none;
@@ -62,7 +63,7 @@ body {
 
 
 .card {
-  background-color: var(--mantine-color-body);
+  background-color: rgba(106, 106, 228, 0.152);
   margin: 0 8 0 8;
   max-height: 400px;
 }
@@ -81,7 +82,7 @@ body {
     var(--mantine-font-family);
   font-weight: 700;
   font-size: rem(22px);
-  line-height: 1;
+  /* line-height: 6; */
 }
 .iner {
   display: flex;
@@ -99,4 +100,7 @@ body {
     justify-content: center;
     margin-top: var(--mantine-spacing-md);
   }
+}
+.genreList {
+  line-height: 1;
 }

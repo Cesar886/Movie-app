@@ -110,6 +110,7 @@ export const Pelicula = () => {
                           variant='light'
                             key={genre.id}
                             color={getBadgeColor(genre.name)}
+                            m={10}
                             // className={classes.genreBadge}
                           >
                             {genre.name}
