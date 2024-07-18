@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Container, Title, Button, Group, Text, List, ThemeIcon, rem, Image, RingProgress, Card, useMantineTheme, Badge } from '@mantine/core';
+import { Container, Title, Button, Group, Text, List, ThemeIcon, rem, Image, RingProgress, Card, Badge } from '@mantine/core';
 import { IconCheck } from '@tabler/icons-react';
 import { useParams } from 'react-router-dom';
 // import classes from './pelicula.module.css';
@@ -9,22 +9,6 @@ const apiKey = 'abf7d734dcd7cce557ecf0abc3a863bf';
 const idioma = '?language=es-ES';
 
 export const Pelicula = () => {
-
-  // const theme = useMantineTheme();
-  // const completed = 1887;
-  // const total = 2334;
-  // const stats = [
-  //   { value: 447, label: 'Remaining' },
-  //   { value: 76, label: 'In progress' },
-  // ];
-  // const items = stats.map((stat) => (
-  //   <div key={stat.label}>
-  //     <Text className={classes.label}>{stat.value}</Text>
-  //     <Text size="xs" c="dimmed">
-  //       {stat.label}
-  //     </Text>
-  //   </div>
-  // ));
 
   const [movieData, setMovieData] = useState({});
   const params = useParams();
@@ -61,23 +45,58 @@ export const Pelicula = () => {
             <Text c="dimmed" mt="md">
               {movieData.overview}
             </Text>
-            <Text>
-              <b>Fecha de lanzamiento:</b> {movieData.release_date}
-            </Text>
-            {movieData.vote_average && (
-              <RingProgress
-                size={70}
-                thickness={8}
-                sections={[{ value: movieData.vote_average * 10, color: 'blue' }]}
-                label={
-                  <Text c="blue" fw={500} ta="center" size={10}>
-                    {porcentaje}%
-                  </Text>
-                }
-              />
-            )}
-            <b>Géneros:</b>
-            {movieData.genres && movieData.genres.map(genre => <p key={genre.id}>{genre.name}</p>)}
+            <Card withBorder p="xl" radius="md" className={classes.card}>
+              <div className={classes.iner}>
+                <div className={classes.content}>
+                  <div className={classes.leftContent}>
+                    <Text fz="xl" className={classes.label}>
+                      Vista General
+                    </Text>
+
+                    <div className={classes.rightContent}>
+                    <div className={classes.ring}>
+                      <RingProgress
+                        roundCaps
+                        size={70}
+                        thickness={8}
+                        sections={[{ value: movieData.vote_average * 10, color: 'blue' }]}
+                        label={
+                          <Text c="blue" fw={500} ta="center" size={10}>
+                            {porcentaje}%
+                          </Text>
+                        }
+                      />
+                    </div>
+                  </div>
+                    <div>
+                      <Text className={classes.lead} mt={30}>
+                        {movieData.release_date}
+                      </Text>
+                      <Text fz="xs" c="dimmed">
+                        Fecha de lanzamiento:
+                      </Text>
+                    </div>
+
+                    
+
+                    <div>
+                      <Text className={classes.lead} mt={30}>
+                        Géneros
+                      </Text>
+                      <div className={classes.genreList}>
+                        {movieData.genres && movieData.genres.map(genre => (
+                          <Badge key={genre.id} color="blue" className={classes.genreBadge}>
+                            {genre.name}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  
+                </div>
+              </div>
+            </Card>
             <List
               mt={30}
               spacing="sm"
@@ -111,50 +130,8 @@ export const Pelicula = () => {
         </div>
       )}
 
-    <Card withBorder p="xl" radius="md" className={classes.card}>
-      <div className={classes.iner}>
-        <div>
-          <Text fz="xl" className={classes.label}>
-            Vista General
-          </Text>
-          <div>
-            <Text className={classes.lead} mt={30}>
-              {movieData.release_date}
-            </Text>
-            <Text fz="xs" c="dimmed">
-              Fecha de lanzamiento:
-            </Text>
-          </div>
 
-          <div>
-            <Text className={classes.lead} mt={30}>
-              Géneros
-            </Text>
-            <div className={classes.genreList}>
-              {movieData.genres && movieData.genres.map(genre => (
-                <Badge key={genre.id} color="blue" className={classes.genreBadge}>
-                  {genre.name}
-                </Badge>
-              ))}
-            </div>
-          </div>
 
-          <div className={classes.ring}>
-            <RingProgress
-              roundCaps
-              size={70}
-              thickness={8}
-              sections={[{ value: movieData.vote_average * 10, color: 'blue' }]}
-              label={
-                <Text c="blue" fw={500} ta="center" size={10}>
-                  {porcentaje}%
-                </Text>
-              }
-            />
-          </div>
-        </div>
-      </div>
-    </Card>
    </Container>
    
   );

@@ -55,7 +55,8 @@
 
 .card {
   background-color: var(--mantine-color-body);
-  margin: 0 10px 0 10px;
+  margin: 0 8 0 8;
+  max-height: 400px;
 }
 
 .label {
@@ -83,7 +84,7 @@
 }
 .ring {
   flex: 1;
-  display:inline;
+  display:flex;
   justify-content: flex-end;
 
   @media (max-width: $mantine-breakpoint-xs) {
