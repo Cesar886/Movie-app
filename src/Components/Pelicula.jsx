@@ -1,24 +1,33 @@
 import { useEffect, useState } from 'react';
-import { Container, Title, Button, Group, Text, List, ThemeIcon, rem, Image, RingProgress } from '@mantine/core';
+import { Container, Title, Button, Group, Text, List, ThemeIcon, rem, Image, RingProgress, Card, useMantineTheme } from '@mantine/core';
 import { IconCheck } from '@tabler/icons-react';
-import classes from './pelicula.module.css';
 import { useParams } from 'react-router-dom';
+// import classes from './pelicula.module.css';
+import {classesStats, classes } from './pelicula.module.css';
 
 const apiKey = 'abf7d734dcd7cce557ecf0abc3a863bf';
 const idioma = '?language=es-ES';
 
 export const Pelicula = () => {
+
+  const theme = useMantineTheme();
+  const completed = 1887;
+  const total = 2334;
+  const stats = [
+    { value: 447, label: 'Remaining' },
+    { value: 76, label: 'In progress' },
+  ];
+  const items = stats.map((stat) => (
+    <div key={stat.label}>
+      <Text className={classesStats.label}>{stat.value}</Text>
+      <Text size="xs" c="dimmed">
+        {stat.label}
+      </Text>
+    </div>
+  ));
+
   const [movieData, setMovieData] = useState({});
   const params = useParams();
-
-  useEffect(() => {
-    fetch('https://api.example.com/protected', {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhYmY3ZDczNGRjZDdjY2U1NTdlY2YwYWJjM2E4NjNiZiIsIm5iZiI6MTcyMTMxNTg5Ni4wNTQ4MzgsInN1YiI6IjY2NjBlM2RhZDdmYjFjMDFhZDI0NDhhNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.t26KdMhrQ7R8Ahi8goc0mgMrkdPiBNHuy6cH59F6F68`
-      }
-    });
-  }, []);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -38,7 +47,7 @@ export const Pelicula = () => {
   }, [params.id]);
 
   const numero = Math.round(movieData.vote_average * 100);
-  const porcentaje = numero.toString().slice(0, 2);
+  const porcentaje = (numero / 10).toFixed(1);
 
   return (
     <Container size="md">
@@ -99,7 +108,46 @@ export const Pelicula = () => {
           </div>
           <Image src={`https://image.tmdb.org/t/p/w500${movieData.poster_path}`} className={classes.image} />
         </div>
+
+
       )}
+        <Card withBorder p="xl" radius="md" className={classesStats.card}>
+        <div className={classesStats.iner}>
+          <div>
+            <Text fz="xl" className={classesStats.label}>
+              Project tasks
+            </Text>
+            <div>
+              <Text className={classesStats.lead} mt={30}>
+                1887
+              </Text>
+              <Text fz="xs" c="dimmed">
+                Completed
+              </Text>
+            </div>
+            <Group mt="lg">{items}</Group>
+          </div>
+
+          <div className={classesStats.ring}>
+            <RingProgress
+              roundCaps
+              thickness={6}
+              size={150}
+              sections={[{ value: (completed / total) * 100, color: theme.primaryColor }]}
+              label={
+                <div>
+                  <Text ta="center" fz="lg" className={classesStats.label}>
+                    {((completed / total) * 100).toFixed(0)}%
+                  </Text>
+                  <Text ta="center" fz="xs" c="dimmed">
+                    Completed
+                  </Text>
+                </div>
+              }
+            />
+          </div>
+        </div>
+        </Card>
     </Container>
   );
 };

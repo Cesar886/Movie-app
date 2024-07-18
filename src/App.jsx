@@ -1,7 +1,7 @@
 import { MantineProvider } from '@mantine/core';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './Components/Home';
-import Login from './Components/Login';
+import Login from './Components/Authentication';
 import { Pelicula } from "./Components/Pelicula";
 
 export default function App({ id }) {
