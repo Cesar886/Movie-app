@@ -3,28 +3,28 @@ import { Container, Title, Button, Group, Text, List, ThemeIcon, rem, Image, Rin
 import { IconCheck } from '@tabler/icons-react';
 import { useParams } from 'react-router-dom';
 // import classes from './pelicula.module.css';
-import {classesStats, classes } from './pelicula.module.css';
+import  classes  from './pelicula.module.css';
 
 const apiKey = 'abf7d734dcd7cce557ecf0abc3a863bf';
 const idioma = '?language=es-ES';
 
 export const Pelicula = () => {
 
-  const theme = useMantineTheme();
-  const completed = 1887;
-  const total = 2334;
-  const stats = [
-    { value: 447, label: 'Remaining' },
-    { value: 76, label: 'In progress' },
-  ];
-  const items = stats.map((stat) => (
-    <div key={stat.label}>
-      <Text className={classesStats.label}>{stat.value}</Text>
-      <Text size="xs" c="dimmed">
-        {stat.label}
-      </Text>
-    </div>
-  ));
+  // const theme = useMantineTheme();
+  // const completed = 1887;
+  // const total = 2334;
+  // const stats = [
+  //   { value: 447, label: 'Remaining' },
+  //   { value: 76, label: 'In progress' },
+  // ];
+  // const items = stats.map((stat) => (
+  //   <div key={stat.label}>
+  //     <Text className={classes.label}>{stat.value}</Text>
+  //     <Text size="xs" c="dimmed">
+  //       {stat.label}
+  //     </Text>
+  //   </div>
+  // ));
 
   const [movieData, setMovieData] = useState({});
   const params = useParams();
@@ -50,6 +50,7 @@ export const Pelicula = () => {
   const porcentaje = (numero / 10).toFixed(1);
 
   return (
+    <>
     <Container size="md">
       {movieData && (
         <div className={classes.inner}>
@@ -110,44 +111,41 @@ export const Pelicula = () => {
         </div>
 
 
+   
+
       )}
-        <Card withBorder p="xl" radius="md" className={classesStats.card}>
-        <div className={classesStats.iner}>
+      <Card withBorder p="xl" radius="md" className={classes.card}>
+        <div className={classes.iner}>
           <div>
-            <Text fz="xl" className={classesStats.label}>
-              Project tasks
+            <Text fz="xl" className={classes.label}>
+              Vista General
             </Text>
             <div>
-              <Text className={classesStats.lead} mt={30}>
-                1887
+              <Text className={classes.lead} mt={30}>
+              {movieData.release_date}
               </Text>
               <Text fz="xs" c="dimmed">
-                Completed
+                Fecha de lanzamiento:
               </Text>
             </div>
-            <Group mt="lg">{items}</Group>
           </div>
 
-          <div className={classesStats.ring}>
+          <div className={classes.ring}>
             <RingProgress
               roundCaps
-              thickness={6}
-              size={150}
-              sections={[{ value: (completed / total) * 100, color: theme.primaryColor }]}
+              size={70}
+              thickness={8}
+              sections={[{ value: movieData.vote_average * 10, color: 'blue' }]}
               label={
-                <div>
-                  <Text ta="center" fz="lg" className={classesStats.label}>
-                    {((completed / total) * 100).toFixed(0)}%
-                  </Text>
-                  <Text ta="center" fz="xs" c="dimmed">
-                    Completed
-                  </Text>
-                </div>
+                <Text c="blue" fw={500} ta="center" size={10}>
+                  {porcentaje}%
+                </Text>
               }
-            />
+              />
           </div>
         </div>
         </Card>
-    </Container>
+   </Container>
+   </>
   );
 };
