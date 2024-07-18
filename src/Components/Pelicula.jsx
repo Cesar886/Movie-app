@@ -17,7 +17,7 @@ export const Pelicula = () => {
     Terror: 'purple',
     Romance: 'pink',
     SciFi: 'blue',
-    Animación: 'yellow',
+    Animación: 'violet',
     Familia: 'green',
     Aventura: 'cyan',
   };

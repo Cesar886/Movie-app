@@ -1,17 +1,21 @@
-import { Button, Container, MantineProvider, Paper, PasswordInput, Space, TextInput, Text } from '@mantine/core';
+import { Button, Container, MantineProvider, Paper, PasswordInput, Space, TextInput, Text, Alert } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { IconInfoCircle } from '@tabler/icons-react';
 
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const icon = <IconInfoCircle />;
 
   const handleLogin = () => {
-    if (username === 'admin@gmail.com' && password === '123456') {
+    if (username === 'admin' && password === '123456') {
       navigate('/Home');
     } else {
-      alert('User: admin@gmail.com --- Pwd: 123456');
+      <Alert variant="light" color="blue" withCloseButton title="Usuario o Contraseña Incorrectas" icon={icon}>
+        User = admin         Pwd = 123456
+      </Alert>
     }
   };
 
