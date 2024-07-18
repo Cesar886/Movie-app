@@ -18,7 +18,7 @@
 .title {
   color: rgb(3, 118, 219);
   font-family:
-    Times New Roman,
+   serif ,
     var(--mantine-font-family);
   font-size: rem(44px);
   line-height: 1.2;

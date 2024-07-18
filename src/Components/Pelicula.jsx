@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Container, Title, Button, Group, Text, List, ThemeIcon, rem, Image, RingProgress, Card, Badge } from '@mantine/core';
+import { Container, Title, Button, Group, Text, List, ThemeIcon, rem, Image, RingProgress, Card, Badge, Flex, useStyles } from '@mantine/core';
 import { IconCheck } from '@tabler/icons-react';
 import { useParams } from 'react-router-dom';
 // import classes from './pelicula.module.css';
@@ -9,6 +9,19 @@ const apiKey = 'abf7d734dcd7cce557ecf0abc3a863bf';
 const idioma = '?language=es-ES';
 
 export const Pelicula = () => {
+
+  const genreColors = {
+    Acción: 'red',
+    Comedia: 'orange',
+    Drama: 'lime',
+    Terror: 'purple',
+    Romance: 'pink',
+    SciFi: 'blue',
+    Animación: 'yellow',
+    Familia: 'green',
+    Aventura: 'cyan',
+  };
+  const getBadgeColor = (genreName) => genreColors[genreName] || 'blue';
 
   const [movieData, setMovieData] = useState({});
   const params = useParams();
@@ -32,6 +45,7 @@ export const Pelicula = () => {
 
   const numero = Math.round(movieData.vote_average * 100);
   const porcentaje = (numero / 10).toFixed(1);
+  // const { classes } = useStyles();
 
   return (
   
@@ -48,12 +62,19 @@ export const Pelicula = () => {
             <Card withBorder p="xl" radius="md" className={classes.card}>
               <div className={classes.iner}>
                 <div className={classes.content}>
-                  <div className={classes.leftContent}>
+                  <div className={classes.leftContent}>                 
+                    <Flex
+                      // mih={0}
+                      // bg="rgba(0, 0, 0, .3)"
+                      gap={12}
+                      justify="flex-start"
+                      align="center"
+                      direction="row"
+                      wrap="wrap"
+                    >
                     <Text fz="xl" className={classes.label}>
                       Vista General
                     </Text>
-
-                    <div className={classes.rightContent}>
                     <div className={classes.ring}>
                       <RingProgress
                         roundCaps
@@ -67,7 +88,8 @@ export const Pelicula = () => {
                         }
                       />
                     </div>
-                  </div>
+                    </Flex>
+
                     <div>
                       <Text className={classes.lead} mt={30}>
                         {movieData.release_date}
@@ -76,26 +98,27 @@ export const Pelicula = () => {
                         Fecha de lanzamiento:
                       </Text>
                     </div>
-
-                    
-
-                    <div>
+                  </div>
+                  <div>
                       <Text className={classes.lead} mt={30}>
                         Géneros
                       </Text>
                       <div className={classes.genreList}>
                         {movieData.genres && movieData.genres.map(genre => (
-                          <Badge key={genre.id} color="blue" className={classes.genreBadge}>
+                          <Badge
+                          variant='light'
+                            key={genre.id}
+                            color={getBadgeColor(genre.name)}
+                            // className={classes.genreBadge}
+                          >
                             {genre.name}
                           </Badge>
                         ))}
                       </div>
                     </div>
-                  </div>
-
-                  
+                  </div>  
                 </div>
-              </div>
+              {/* </div> */}
             </Card>
             <List
               mt={30}
