@@ -153,9 +153,10 @@ export const Pelicula = () => {
                 <Card.Section component="a" href="https://mantine.dev/">
                   <Image
                     src={`https://image.tmdb.org/t/p/w500${company.logo_path}`}
-                    height={160}
-                    // alt={company.name}
-                    />
+                    // height={160}
+                    h={200}
+                    fit="contain"
+                  />
                 </Card.Section>
 
                   <Group justify="space-between" mt="md" mb="xs">
