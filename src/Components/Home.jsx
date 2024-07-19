@@ -54,7 +54,7 @@ export default function Home() {
         onNewCategory={(event) => onAddCategory(event)}
       />
 
-      <SimpleGrid cols={5} spacing="xl">
+      <SimpleGrid cols={5} spacing="lg">
         {!isSearching ? (
           popularMovies.map((movie) => (
             <GifItem

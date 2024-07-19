@@ -1,5 +1,5 @@
 body {
-  background-image: url('../../public/moview.jpeg'); 
+  /* background-image: url('../../public/moview.jpeg');  */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center; 
@@ -63,7 +63,7 @@ body {
 
 
 .card {
-  background-color: rgba(106, 106, 228, 0.152);
+  background-color: #88c9e13f;
   margin: 0 8 0 8;
   max-height: 400px;
 }

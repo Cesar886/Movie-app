@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Container, Title, Button, Group, Text, List, ThemeIcon, rem, Image, RingProgress, Card, Badge, Flex, useStyles, Dialog, TextInput, CopyButton } from '@mantine/core';
-import { IconCheck } from '@tabler/icons-react';
+import { Container, Title, Button, Text, Image, RingProgress, Card, Badge, Flex, Modal, Group, SimpleGrid } from '@mantine/core';
+import { IconPlayerPlay } from '@tabler/icons-react';
 import { useParams } from 'react-router-dom';
-// import classes from './pelicula.module.css';
 import  classes  from './pelicula.module.css';
 import { useDisclosure } from '@mantine/hooks';
 
@@ -24,10 +23,11 @@ export const Pelicula = () => {
     Aventura: 'cyan',
   };
   const getBadgeColor = (genreName) => genreColors[genreName] || 'blue';
-
+  
+  
   const [movieData, setMovieData] = useState({});
   const params = useParams();
-
+  
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -39,20 +39,20 @@ export const Pelicula = () => {
         console.error("Error fetching data:", error);
       }
     };
-
+    
     if (params.id) {
       fetchMovies();
     }
   }, [params.id]);
-
+  
   const numero = Math.round(movieData.vote_average * 100);
   const porcentaje = (numero / 10).toFixed(1);
-  const [opened, { toggle, close }] = useDisclosure(false);
-
-  // const { classes } = useStyles();
-
-  return (
+  const [opened, { open, close }] = useDisclosure(false);
   
+  // const { classes } = useStyles();
+  
+  return (
+    
     <Container size='80%'>
       {movieData && (
         <div className={classes.inner}>
@@ -73,13 +73,10 @@ export const Pelicula = () => {
               <Text c="dimmed" mt="md">
                 {movieData.overview}
               </Text>
-              <CopyButton value={movieData.overview}>
-                {({ copied, copy }) => (
-                  <Button color={copied ? 'teal' : 'blue'} onClick={copy} radius="lg" variant='light' mt='md'>
-                    {copied ? 'Copied url' : 'Copiar Descripcion'}
-                  </Button>
-                )}
-              </CopyButton>
+              <Modal opened={opened} onClose={close} withCloseButton={false}>
+                Suscribasee
+              </Modal>
+              <Button onClick={open} variant='light' mt='md' radius='lg' leftSection={<IconPlayerPlay size={14} />}>Ver ahora</Button>
             </Container>
             <Container size={8000}>
               <Card withBorder p="lg" radius="md" className={classes.card} mt='lg'>
@@ -142,58 +139,41 @@ export const Pelicula = () => {
                       </div>
                     </div>  
                   </div>
-                {/* </div> */}
               </Card>
             </Container>
           </Flex>
-          
-
-            <List
-              mt={30}
-              spacing="sm"
-              size="sm"
-              icon={
-                <ThemeIcon size={20} radius="xl">
-                  <IconCheck style={{ width: rem(12), height: rem(12) }} stroke={1.5} />
-                </ThemeIcon>
-              }
-            >
-              <List.Item>
-                <b>based</b> – build type safe applications, all components and hooks export types
-              </List.Item>
-              <List.Item>
-                <b>Free and open source</b> – all packages have MIT license, you can use Mantine in any project
-              </List.Item>
-              <List.Item>
-                <b>No annoying focus ring</b> – focus ring will appear only when user navigates with keyboard
-              </List.Item>
-            </List>
-            <Group mt={30}>
-              <Button radius="xl" size="md" className={classes.control}>
-                Dar Like
-              </Button>
-              <Button variant="default" radius="xl" size="md" className={classes.control}>
-                Suscribirse
-              </Button>
-              <Button onClick={toggle} radius='lg' variant='light'>Suscribete</Button>
-              <Dialog opened={opened} withCloseButton onClose={close} size="lg" radius="md">
-                <Text size="sm" mb="xs" fw={500}>
-                    Suscribete
-                </Text>
-
-                <Group align="flex-end">
-                    <TextInput placeholder="cesar4herrera@gmail.com" style={{ flex: 1 }} />
-                    <Button onClick={close}>Subscribe</Button>
-                </Group>
-              </Dialog>
-            </Group>
           </div>
         </div>
       )}
+      <Container withBorder shadow="sm" padding="lg">
+        <SimpleGrid cols={4} spacing="lg">
+          {movieData.production_companies && movieData.production_companies.map((company, index) => (
+            company.logo_path && (
+              <Card key={index} shadow="sm" padding="lg" radius="md" withBorder>
+                <Card.Section component="a" href="https://mantine.dev/">
+                  <Image
+                    src={`https://image.tmdb.org/t/p/w500${company.logo_path}`}
+                    height={160}
+                    // alt={company.name}
+                    />
+                </Card.Section>
 
-
-
-   </Container>
+                  <Group justify="space-between" mt="md" mb="xs">
+                  <Text fw={500}>{company.name}</Text>
+                  <Badge color="pink">{ company.origin_country }</Badge>
+                </Group>
+                <Text size="sm" c="dimmed">
+                  LOrem ipsum dolor sit amet
+                </Text>
+                <Button color="blue" fullWidth mt="md" radius="md">
+                  Book classic tour now
+                </Button>
+              </Card>
+            )
+          ))}
+        </SimpleGrid>
+      </Container>
+    </Container>
    
   );
 };
