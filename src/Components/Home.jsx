@@ -49,12 +49,12 @@ export default function Home() {
   };
 
   return (
-    <Container fluid={ true } size='xl'>
+    <Container size='90%'>
       <AddCategory  
         onNewCategory={(event) => onAddCategory(event)}
       />
 
-      <SimpleGrid cols={4} spacing="lg">
+      <SimpleGrid cols={5} spacing="xl">
         {!isSearching ? (
           popularMovies.map((movie) => (
             <GifItem

@@ -1,25 +1,25 @@
 body {
   background-image: url('../../public/moview.jpeg'); 
   background-repeat: no-repeat;
-  background-size: cover; /* Ensures the background image covers the entire page */
-  background-position: center; /* Centers the image */
+  background-size: cover;
+  background-position: center; 
 }
 
 
 .inner {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   padding-top: calc(var(--mantine-spacing-xl) * 4);
   padding-bottom: calc(var(--mantine-spacing-xl) * 4);
 }
 
 .content {
-  max-width: rem(480px);
+  /* max-width: rem(480px); */
   /* margin-right: calc(var(--mantine-spacing-xl) * 3); */
 
   @media (max-width: $mantine-breakpoint-md) {
-    max-width: 100%;
-    margin-right: 0;
+    /* max-width: 100%;
+    margin-right: 0; */
   }
 }
 

@@ -1,8 +1,8 @@
-import { MantineProvider, RingProgress, SimpleGrid } from "@mantine/core"
-import { Badge, Button, Card, Group, Text, Image, Modal } from '@mantine/core';
+import { Flex, MantineProvider, RingProgress, SimpleGrid } from "@mantine/core"
+import { Button, Card, Text, Image } from '@mantine/core';
 import { Props } from "../utils/props";
-import { useDisclosure } from '@mantine/hooks';
 import { useNavigate } from "react-router-dom";
+
 
 
 export const GifItem = ({ title, url, id, desc, rate }) => {
@@ -10,6 +10,9 @@ export const GifItem = ({ title, url, id, desc, rate }) => {
     // const [opened, { open, close }] = useDisclosure(false);
 
     const navigate = useNavigate();
+    // const [loading, { toggle }] = useDisclosure();
+
+
 
     const info = () => {
         navigate(`/movie/${id}`, { replace: true });
@@ -27,8 +30,16 @@ export const GifItem = ({ title, url, id, desc, rate }) => {
                         height={450}
                         />
                     </Card.Section>
+                    <Flex
+                        mb="xs"
+                        mt="md"
+                        gap="md"
+                        justify="space-between"
+                        align="flex-start"
+                        direction="row"
+                        wrap="wrap"
+                        >
 
-                    <Group justify="space-between" mt="md" mb="xs">
                         <Props desc={ title } maxWords={3} />
                         <RingProgress
                             sections={[{ value: rate * 10, color: 'blue' }]}
@@ -39,28 +50,17 @@ export const GifItem = ({ title, url, id, desc, rate }) => {
                                     { rate }
                                 </Text>
                             }
-                        />
-                    </Group>
-
+                            />
+                    </Flex>
                     <Text size="sm" c="dimmed">
                         <Props desc={ desc } maxWords={5} />
                         {/* {desc} */}
                         
                     </Text>
 
-                    <Button onClick={ info }>
+                    <Button onClick={ info } mt={10} variant="light">
                         Ver mass
                     </Button>
-
-
-                    {/* <Button opened={opened} onClose={close} withCloseButton={false}>
-                        Ver mass.
-                    </Button> */}
-
-                    {/* <Modal opened={opened} onClose={close} withCloseButton={false} >
-                        <Text> { desc } </Text>
-                    </Modal> */}
-
                 </Card>
             </SimpleGrid>
         </MantineProvider>
