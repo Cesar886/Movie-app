@@ -13,9 +13,9 @@ export default function Login() {
     if (username === 'admin' && password === '01fotwin01') {
       navigate('/Home');
     } else {
-      <Alert variant="light" color="blue" withCloseButton title="Usuario o Contraseña Incorrectas" icon={icon}>
+      <alert variant="light" color="blue" withCloseButton title="Usuario o Contraseña Incorrectas" icon={icon}>
         User = admin         Pwd = 01fotwin01
-      </Alert>
+      </alert>
     }
   };
 
