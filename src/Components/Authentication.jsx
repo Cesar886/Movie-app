@@ -10,11 +10,11 @@ export default function Login() {
   const icon = <IconInfoCircle />;
 
   const handleLogin = () => {
-    if (username === 'admin' && password === '123456') {
+    if (username === 'admin' && password === '01fotwin01') {
       navigate('/Home');
     } else {
       <Alert variant="light" color="blue" withCloseButton title="Usuario o Contraseña Incorrectas" icon={icon}>
-        User = admin         Pwd = 123456
+        User = admin         Pwd = 01fotwin01
       </Alert>
     }
   };
