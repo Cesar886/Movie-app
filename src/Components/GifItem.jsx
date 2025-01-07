@@ -15,7 +15,7 @@ export const GifItem = ({ title, url, id, desc, rate }) => {
 
 
     const info = () => {
-        navigate(`/movie/${id}`, { replace: true });
+        navigate(`/${id}`, { replace: true });
         console.log("🚀 ~ handleInfoClick ~ `/movie/${id}`:", `/movie/${id}`)
     };
 

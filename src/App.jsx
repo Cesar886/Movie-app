@@ -1,8 +1,8 @@
 import { MantineProvider } from '@mantine/core';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './Components/Home';
-import Login from './Components/Authentication';
 import { Pelicula } from "./Components/Pelicula";
+import { Ver } from "./Components/Ver";
 
 export default function App({ id }) {
   return (
@@ -10,7 +10,8 @@ export default function App({ id }) {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path='/movie/:id' element={<Pelicula />} />
+          <Route path='/:id' element={<Pelicula />} />
+          <Route path='/:id/:ver' element={<Ver />} />
         </Routes>
       </BrowserRouter>
     </MantineProvider>
