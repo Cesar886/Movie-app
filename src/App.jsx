@@ -9,8 +9,7 @@ export default function App({ id }) {
     <MantineProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/Home" element={<Home />} exact />
+          <Route path="/" element={<Home />} />
           <Route path='/movie/:id' element={<Pelicula />} />
         </Routes>
       </BrowserRouter>

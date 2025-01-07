@@ -163,12 +163,8 @@ export const Pelicula = () => {
                   <Text fw={500}>{company.name}</Text>
                   <Badge color="pink">{ company.origin_country }</Badge>
                 </Group>
-                <Text size="sm" c="dimmed">
-                  LOrem ipsum dolor sit amet
-                </Text>
                 <Button color="blue" fullWidth mt="md" radius="md">
-                  Book classic tour now
-                </Button>
+Saber mas                </Button>
               </Card>
             )
           ))}
